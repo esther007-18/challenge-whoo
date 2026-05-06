@@ -11,5 +11,5 @@ class Hangman:
         pygame.draw.line(surface, self.rope, (self.pos[0],0), (self.pos), 3)
 
         pygame.draw.circle(surface, self.col, (self.pos), self.size) 
-
+    
     
