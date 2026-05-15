@@ -26,7 +26,10 @@ class Trivia:
         answer = quest_a[1] if len(quest_a) > 1 else ""
         self.answer=answer
         self.question = question
-        return question, answer
+        return question, answer 
+        # checking if there any more questions 
+    
+          
     def comp(self, guess):
         self.guess=guess
         if guess==self.answer:
@@ -36,7 +39,7 @@ class Trivia:
         
     def draw(self, surface,width):
         self.width= width
-        text = self.font.render(self.question, True, "Black")
+        text = self.font.render(self.question, True, "Red")
 
         surface.blit(text,((width-text.get_size()[0])/2,150))
 
@@ -50,5 +53,19 @@ class Trivia:
 #print("Answer:", answer)
 #print(score)
 
+#   print("Correct! :)")
+#         else:
+#             print("Incorrect :(")
 
-        
+# if self.i >= len(self.trivia_q):
+#             return None, None
+
+#     while True:
+#         question, answer = game.get_next_QnA()
+
+#         if question is None:
+#             print("No more questions!")
+#             break
+#         p_a = input(question + " ")
+
+#         if p_a.isadigit() == answer.isadigit():
