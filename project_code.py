@@ -4,13 +4,14 @@ pygame.init()
 from hangman import Hangman
 from triv_ques import Trivia
 from answer import Input
+from memes import Memes
 
 pygame.mixer.init()
 pygame.mixer.music.load("L_B_M.mp3")
 pygame.mixer.music.play(-1)
 pygame.mixer.music.set_volume(0.9)
 
-W_S=1280, 720
+W_S=1280, 650
 screen = pygame.display.set_mode((W_S))
 pygame.display.set_caption("Textbox Example")
 active = False
@@ -23,10 +24,14 @@ hane= Hangman("dodgerblue4", "firebrick3", 70, (427, 400), pygame.font.Font(None
 hane2= Hangman("green", "dodgerblue4", 70, (853, 400),pygame.font.Font(None, 25))
 input_box=Input(pygame.Rect(550, 500, 250, 70), pygame.font.Font(None, 25))
 question2_0=Trivia("trivia.txt", pygame.font.Font(None, 50))
+shark=Memes(0,500,2,350)
+ahhhh_jump=False
+
 # game = Trivia()
 image=pygame.image.load("ytube.png")
 image2=pygame.image.load("scary background.jpg")
 image2=pygame.transform.scale(image2,W_S)
+
 
 game_started = False
 while running:
@@ -53,7 +58,14 @@ while running:
                 question2_0.get_next_QnA()
             if event.key == pygame.K_BACKSPACE:
                 input_box.entered_word=input_box.entered_word[:-1]
+    if ahhhh_jump==False:
+        if(592)<=hane.pos[1]:
+            shark.draw2(screen)
+            ahhhh_jump=True
 
+        elif(592) <=hane2.pos[1]:
+            shark.draw2(screen)
+            ahhhh_jump=True
         
     screen.blit(image2,(0,0))
    
@@ -64,8 +76,8 @@ while running:
         hane2.draw(screen)
         question2_0.draw(screen, 1280)
         input_box.draw(screen)
-
-
+        shark.draw(screen)
+        shark.draw2(screen)
     pygame.display.flip()
     clock.tick(60)
 
