@@ -1,38 +1,47 @@
+# memes.py
 import pygame
-import random
 import math
 
 class Memes:
     def __init__(self, x_cord, y_cord, speed, angle):
-        self.x_cord=x_cord
-        self.y_cord=y_cord
-        self.speed=speed
+        self.x_cord = x_cord
+        self.y_cord = y_cord
+        self.speed = 700
         self.image = pygame.image.load("shark.png").convert_alpha()
-        self.speed=100
-        self.angle=angle
-        self.start_time=pygame.time.get_ticks()
+        self.angle = angle
 
-        # angle from movement direction
-        angle = math.degrees(math.atan2(-x_cord, y_cord))
+        # font for Game Over text
+        self.font = pygame.font.SysFont(None, 72)
+
+        # shark does NOT move until reaches point
+        self.start_time = None
+
+    def jump(self):
+        self.start_time = pygame.time.get_ticks()
 
     def pos(self, offset=0):
 
+        # stay still before jump starts
+        if self.start_time is None:
+            return self.x_cord, self.y_cord
+
         elapsed = ((pygame.time.get_ticks() - self.start_time) / 1000) + offset
 
+        # movement
         new_x = self.x_cord + (self.speed * elapsed)
-        new_y = self.y_cord +0.01*(self.speed * elapsed - 300) ** 2
+
+        # jump arc
+        new_y = self.y_cord + (120 * elapsed - 60) ** 2 * 0.02
 
         return new_x, new_y
 
-    def draw (self, surface):
-    
-        #self.image = pygame.transform.rotate(self.image, self.angle)
+    def draw(self, surface, width):
+
         x, y = self.pos()
 
-            # tiny future step
-        future_x, future_y =self.pos(0.01)
+        # future position for rotation
+        future_x, future_y = self.pos(0.01)
 
-            # movement direction
         dx = future_x - x
         dy = future_y - y
 
@@ -40,18 +49,18 @@ class Memes:
 
         rotated = pygame.transform.rotate(self.image, angle)
 
-        # keep image centered
         rect = rotated.get_rect(center=(x, y))
 
-        # draw
         surface.blit(rotated, rect)
 
-        print (self.pos())
+        # show Game Over after 3 seconds
+        if self.start_time is not None:
+            elapsed = ((pygame.time.get_ticks() - self.start_time) / 1000)
 
-    def draw2(self,surface):
-        self.start_time=pygame.time.get_ticks()
+            if elapsed >= 5:
+                text = self.font.render("GAME OVER!!!", True, "Black")
 
-   
-       
-
-    
+                surface.blit(
+                    text,
+                    ((width - text.get_width()) // 2, 150)
+                )
