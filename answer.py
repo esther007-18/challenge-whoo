@@ -15,7 +15,6 @@ class Input:
         else:
             pygame.draw.rect(surface, "Red", self.input_box)
 
-            # make it so it draws the number
         text = self.font.render(self.entered_word, True, "Black")
 
         surface.blit(text,(self.input_box.x + 5, self.input_box.y + 5) )

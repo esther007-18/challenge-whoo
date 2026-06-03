@@ -37,3 +37,7 @@
     How many world wars were there? 2
     In what year did Earth Day first occur? 1970
     How many amendments are in the US Bill of Rights? 10
+    What year did the very first iPhone get released? 2007
+    In what year was the first Harry Potter book published? 1997
+    In what year did the Titanic sink in the North Atlantic Ocean? 1912
+    In what year did World War I begin? 1914

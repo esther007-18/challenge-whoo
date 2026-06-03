@@ -1,4 +1,3 @@
-# memes.py
 import pygame
 import math
 
@@ -10,10 +9,8 @@ class Memes:
         self.image = pygame.image.load("shark.png").convert_alpha()
         self.angle = angle
 
-        # font for Game Over text
         self.font = pygame.font.SysFont(None, 72)
 
-        # shark does NOT move until reaches point
         self.start_time = None
 
     def jump(self):
@@ -21,16 +18,13 @@ class Memes:
 
     def pos(self, offset=0):
 
-        # stay still before jump starts
         if self.start_time is None:
             return self.x_cord, self.y_cord
 
         elapsed = ((pygame.time.get_ticks() - self.start_time) / 1000) + offset
 
-        # movement
         new_x = self.x_cord + (self.speed * elapsed)
 
-        # jump arc
         new_y = self.y_cord + (120 * elapsed - 60) ** 2 * 0.02
 
         return new_x, new_y
@@ -39,7 +33,6 @@ class Memes:
 
         x, y = self.pos()
 
-        # future position for rotation
         future_x, future_y = self.pos(0.01)
 
         dx = future_x - x
@@ -53,7 +46,6 @@ class Memes:
 
         surface.blit(rotated, rect)
 
-        # show Game Over after 3 seconds
         if self.start_time is not None:
             elapsed = ((pygame.time.get_ticks() - self.start_time) / 1000)
 

@@ -42,30 +42,3 @@ class Trivia:
         text = self.font.render(self.question, True, "Red")
 
         surface.blit(text,((width-text.get_size()[0])/2,150))
-
-#triv= Trivia("trivia.txt")
-#quest, answer =triv.get_next_QnA()
-#print(f"Question: {quest}")
-#guess=input()
-#print(f"Guess: {guess}")
-#score=0
-#score +=triv.comp(guess)
-#print("Answer:", answer)
-#print(score)
-
-#   print("Correct! :)")
-#         else:
-#             print("Incorrect :(")
-
-# if self.i >= len(self.trivia_q):
-#             return None, None
-
-#     while True:
-#         question, answer = game.get_next_QnA()
-
-#         if question is None:
-#             print("No more questions!")
-#             break
-#         p_a = input(question + " ")
-
-#         if p_a.isadigit() == answer.isadigit():
