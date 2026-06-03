@@ -26,7 +26,7 @@ image = pygame.image.load("ytube.png")
 image2 = pygame.image.load("scary background.jpg")
 image2 = pygame.transform.scale(image2, W_S)
 
-
+#restarts the game after when the whole runs
 def reset_game():
     global hane, hane2, input_box, question2_0, shark
     global shark_jump, game_started
@@ -71,13 +71,13 @@ while running:
                 continue
 
             if input_box.active2:
-
+#gets the intended number to be inputted into the tebox
                 if pygame.K_0 <= event.key <= pygame.K_9:
                     if len(input_box.entered_word) <= 9:
                         input_box.entered_word += str(
                             event.key - pygame.K_0
                         )
-
+# makes sure that if the textbox is empty it does not crash the program
                 if event.key == pygame.K_RETURN:
                     if input_box.entered_word=="":
                         pass

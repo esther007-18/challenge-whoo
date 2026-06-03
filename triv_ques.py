@@ -27,7 +27,7 @@ class Trivia:
         self.answer=answer
         self.question = question
         return question, answer 
-        # checking if there any more questions 
+        # checks if there any more questions 
     
           
     def comp(self, guess):

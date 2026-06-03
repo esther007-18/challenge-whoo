@@ -15,4 +15,4 @@ Usage: When entering a guess click on the red box to activate it and only type n
 
 License: MIT
 
-AI Documentation: AI was used to generate a bit of code for functions and general overall and generate pictures for the players. With this assistance I learnt how to do specific functions that i was new to in order to impove the project.
+AI Documentation: AI was used to generate a bit of code for functions, debug and general overall code and generate pictures for the players. With this assistance I learnt how to do specific functions that i was new to in order to impove the project.
